@@ -1,9 +1,7 @@
 package com.tugrandemirel.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
@@ -12,12 +10,14 @@ import java.util.Date;
 //@Getter
 //@Setter
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private int id;
 
     @Column(name="first_name")
     private String firstName;

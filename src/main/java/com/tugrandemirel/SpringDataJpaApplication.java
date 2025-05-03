@@ -2,7 +2,9 @@ package com.tugrandemirel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+@EntityScan(basePackages = "com.tugrandemirel")
 @SpringBootApplication
 public class SpringDataJpaApplication {
 
