@@ -9,9 +9,9 @@ public abstract class BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @Column(name = "update_at", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updateAt;
+    private Date updatedAt;
 
     @Column(name = "deleted_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -22,7 +22,7 @@ public abstract class BaseEntity {
     }
 
     public Date getUpdateAt() {
-        return updateAt;
+        return updatedAt;
     }
 
     public Date getDeletedAt() {
@@ -37,11 +37,11 @@ public abstract class BaseEntity {
     protected void onCreate() {
         Date now = new Date();
         this.createdAt = now;
-        this.updateAt = now;
+        this.updatedAt = now;
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updateAt = new Date();
+        this.updatedAt = new Date();
     }
 }
