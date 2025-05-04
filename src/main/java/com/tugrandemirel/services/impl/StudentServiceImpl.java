@@ -30,15 +30,34 @@ public class StudentServiceImpl implements IStudentService {
     // get student by id
     @Override
     public Student getStudentById(Long id) {
-       try {
-           /*Optional<Student> student = studentRepository.findById(id);
+      /*Optional<Student> student = studentRepository.findById(id);
            if (student.isEmpty()) {
                return null;
            }
            return student.get();*/
-           return studentRepository.findById(id).orElse(null);
-       } catch (Exception e) {
-           throw new RuntimeException(e);
-       }
+        return studentRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteStudent(Long id) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            studentRepository.delete(student);
+        }
+    }
+
+    // update student
+    @Override
+    public Student updateStudent(Long id, Student updateStudent) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setFirstName(updateStudent.getFirstName());
+            student.setLastName(updateStudent.getLastName());
+            student.setBirthOfDate(updateStudent.getBirthOfDate());
+
+            return studentRepository.save(student);
+        }
+
+        return null;
     }
 }

@@ -10,15 +10,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/student")
-public class StudentControllerImpl  implements IStudentController {
+public class StudentControllerImpl implements IStudentController {
 
     @Autowired
     private IStudentService studentService;
 
-    /** TODO: DTO kullanılacak **/
+    /**
+     * TODO: DTO kullanılacak
+     **/
 
     // List Methodu
-    @GetMapping(path = "/")
+    @GetMapping(path = "/list")
     @Override
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
@@ -37,5 +39,17 @@ public class StudentControllerImpl  implements IStudentController {
     public Student getStudentById(@PathVariable Long id) {
         System.out.println(id);
         return studentService.getStudentById(id);
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    @Override
+    public void deleteStudentById(@PathVariable Long id) {
+        studentService.deleteStudent(id);
+    }
+
+    @PutMapping(path = "/update/{id}")
+    @Override
+    public Student updateStudent(@PathVariable Long id ,@RequestBody Student updateStudent) {
+        return studentService.updateStudent(id, updateStudent);
     }
 }
