@@ -1,17 +1,19 @@
 package com.tugrandemirel.services;
 
+import com.tugrandemirel.dto.DtoStudent;
+import com.tugrandemirel.dto.DtoStudentIU;
 import com.tugrandemirel.entities.Student;
 
 import java.util.List;
 
 public interface IStudentService {
-    public Student saveStudent(Student student);
+    public DtoStudent saveStudent(DtoStudentIU student);
 
-    public List<Student> getAllStudents();
+    public List<DtoStudent> getAllStudents();
 
-    public Student getStudentById(Long id);
+    public DtoStudent getStudentById(Long id);
 
     public void deleteStudent(Long id);
 
-    public Student updateStudent(Long id, Student updateStudent);
+    public DtoStudent updateStudent(Long id, DtoStudentIU dtoStudentIU);
 }
