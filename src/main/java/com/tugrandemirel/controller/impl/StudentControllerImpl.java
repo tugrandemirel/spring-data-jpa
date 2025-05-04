@@ -5,6 +5,7 @@ import com.tugrandemirel.dto.DtoStudent;
 import com.tugrandemirel.dto.DtoStudentIU;
 import com.tugrandemirel.entities.Student;
 import com.tugrandemirel.services.IStudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class StudentControllerImpl implements IStudentController {
     // Store Method
     @PostMapping(path = "/save")
     @Override
-    public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudentIu) {
+    public DtoStudent saveStudent(@RequestBody @Valid DtoStudentIU dtoStudentIu) {
         return studentService.saveStudent(dtoStudentIu);
     }
 
