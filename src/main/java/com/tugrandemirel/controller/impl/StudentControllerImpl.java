@@ -11,20 +11,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/student")
 public class StudentControllerImpl  implements IStudentController {
+
     @Autowired
     private IStudentService studentService;
 
     /** TODO: DTO kullanılacak **/
+
+    // List Methodu
+    @GetMapping(path = "/")
+    @Override
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
+    }
+
+    // Store Method
     @PostMapping(path = "/save")
     @Override
     public Student saveStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);
     }
 
-    @GetMapping(path = "/list")
+    // Show Method
+    @GetMapping(path = "/list/{id}")
     @Override
-    public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+    public Student getStudentById(@PathVariable Long id) {
+        System.out.println(id);
+        return studentService.getStudentById(id);
     }
-
 }

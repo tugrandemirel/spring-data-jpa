@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements IStudentService {
@@ -24,5 +25,20 @@ public class StudentServiceImpl implements IStudentService {
     public List<Student> getAllStudents() {
         List<Student> studentList = studentRepository.findAll();
         return studentList;
+    }
+
+    // get student by id
+    @Override
+    public Student getStudentById(Long id) {
+       try {
+           /*Optional<Student> student = studentRepository.findById(id);
+           if (student.isEmpty()) {
+               return null;
+           }
+           return student.get();*/
+           return studentRepository.findById(id).orElse(null);
+       } catch (Exception e) {
+           throw new RuntimeException(e);
+       }
     }
 }
