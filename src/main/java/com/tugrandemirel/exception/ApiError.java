@@ -13,8 +13,8 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApiError {
+public class ApiError<T> {
     private String id;
     private Date errorTime;
-    private Map<String, List<String>> errors;
+    private T errors;
 }

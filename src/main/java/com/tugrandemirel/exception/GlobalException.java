@@ -33,8 +33,8 @@ public class GlobalException {
         return list;
     }
 
-    private ApiError createApiError(Map<String, List<String>> errorsMap) {
-        ApiError apiError = new ApiError();
+    private <T> ApiError<T> createApiError(T errorsMap) {
+        ApiError<T> apiError = new ApiError<T>();
         // UUID
         apiError.setId(UUID.randomUUID().toString());
         apiError.setErrorTime(new Date());
