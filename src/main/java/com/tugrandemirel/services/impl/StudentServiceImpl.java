@@ -34,11 +34,11 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public List<DtoStudent> getAllStudents() {
         List<DtoStudent> responseStudents = new ArrayList<>();
-        List<Student> studentList = studentRepository.findAll();
+        List<Student> studentList = studentRepository.findAllStudents();
         for (Student student : studentList) {
-            DtoStudent repsonseStudent = new DtoStudent();
-            BeanUtils.copyProperties(student, repsonseStudent);
-            responseStudents.add(repsonseStudent);
+            DtoStudent dtoStudent = new DtoStudent();
+            BeanUtils.copyProperties(student, dtoStudent);
+            responseStudents.add(dtoStudent);
         }
         return responseStudents;
     }
